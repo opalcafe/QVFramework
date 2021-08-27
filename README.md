@@ -109,10 +109,11 @@ it will move the read head 1 character and return you the last symbol before the
 ```
 var next = token.consume() //next == '#'
 var peek_next = token.peek_char() //peek_next == 't' will not move read head
+#### Looping through text tape
 ```
 
 
-#### Looping through text tape
+
 QVToken has an in-built method to help looping through characters. '.alive()'. 
 `.alive()` is use din a while loop to check if you have reached the end
 
@@ -120,7 +121,7 @@ QVToken has an in-built method to help looping through characters. '.alive()'.
 //will loop through every character and print it
 while(token.alive()){
   var symbol = token.consume();
-  qv_print(sumbol);
+  qv_print(symbol);
 }
 
 #### Parse Token with a charset
@@ -134,7 +135,7 @@ qv_print(num);
 
 var leftover = new QVText();
 while(token_num.alive())
-  leftover.appen(token_num.consume());
+  leftover.append(token_num.consume());
 ```
 
 ### QVToken - Methods
@@ -158,5 +159,42 @@ while(token_num.alive())
       
  .next(charset : string)
 ```
+
+
+### QV_format()
+
+You can format a debug_log_message with `qv_format(text, args)`
+`args` is a special data type returned from `qv_args`
+
+```
+var name = "John Doe"
+var age = 23
+
+var options = new qv_args();
+options.add(name);
+options.add(name);
+
+
+qv_format("My name is %s and I am %s years old")
+
+//You can chain args
+var chain = new qv_args();
+chain.add("First param").add("Second param").add(338);
+```
+You can also loop through args
+```
+chain.forEach(function(item){
+    qv_print(item);
+})
+
+```
+You an also use the Quick args function up to 5 paramaters
+
+```
+var spread = qv_5args("arg1", "next", 3 ,false, {
+    name : "Last Arg"
+})
+```
+
 
 
