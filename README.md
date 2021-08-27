@@ -12,11 +12,12 @@ After importing the files from vtest && vtest-framework, the framework uses gml_
 To add a test open `vtest/VTestUnit` there should be a single function called `VTestUnit`. Add a new test by calling `VTestAdd(<script_name>, <test_name>(optional? : string))`
 
 
-When `VTestMain` fires it will iterate though each test. If any tests fail you will get a dialog error containing the exact test that failed.
+When `VTestMain` fires it will iterate though each test and if any tests fails you will get a dialog error containing the exact test that failed.
 
 #### Assertion Functions
 Assert function should be added into TestUnits. 
-If an assert function evaluates to false. It will through an erro with a `message` and tell you which file causes it
+If an assert function evaluates to false
+it will through an error with the `message` and tell you which file causes it
 The `message` parameters are optional but recommended so you know what caused the fail
 VTest will also assert types if you use a specific function like `vassert_string()`
 ```
