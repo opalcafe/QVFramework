@@ -14,6 +14,61 @@ To add a test open `vtest/VTestUnit` there should be a single function called `V
 
 When `VTestMain` fires it will iterate though each test. If any tests fail you will get a dialog error containing the exact test that failed.
 
+#### Assertion Functions
+Assert function should be added into TestUnits. 
+If an assert function evaluates to false. It will through an erro with a `message` and tell you which file causes it
+The `message` parameters are optional but recommended so you know what caused the fail
+VTest will also assert types if you use a specific function like `vassert_string()`
+```
+vassert_true(val : bool, message : string)
+
+vassert_false(val : bool, message)
+
+vassert_bool(val :bool, expected : bool, message)
+
+vassert_number(val : num, expc : num, message)
+
+vassert_string(val : string, expc :string, message)
+
+vassert_type(val : any, sample : any, message)
+   //will check a type using a 'sample' and 'typeof(val)'
+   
+vtype_number(val, message) //check val is a number
+
+vtype_string(val, message) //check val is string
+
+vtype_bool(val, message) //check val is bool. Booleans are actually numbers so if you pass 1 it will say tru buy meh..
+
+vtype_array(val, message) //check val array
+
+vtype_struct(val, message) //check val is struct
+
+vassert_defined(val, message) //assert defined using !is_undefined()
+
+vassert_undefined(val, message)
+
+vexists(val, message) //shortcut to vassert_defined()
+
+vundef(val, message) //shorthand for vassert_undefined
+
+vassert_array(checkArray, expectedArray, message)
+     //Will check each element matches and same type
+     
+ vassert_array_type(checkArray, sample, message)
+    //Check all elements match the sample type
+    
+ vassert_throw(funct: Function,doesThrow : bool, message)
+    //Will attempt to call fucnt is a try, catch.
+    //Will assert a thrown error state after
+
+
+
+
+
+```
+
+
+
 #### Note
 VTest runs each time you compile your game. Good idea to remove it before production
 
