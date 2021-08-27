@@ -141,7 +141,7 @@ padtext(count :number, text)
 ```
 
 
-### QVText
+### QToken
 
 QVToken is a helper class used to help write string parsers and tokenizers. 
 You pass it a string and using the class methods you can loop over a string to tokenizer it using a character set.
